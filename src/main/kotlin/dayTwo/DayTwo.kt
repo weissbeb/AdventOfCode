@@ -2,17 +2,12 @@ package dayTwo
 
 import generalUtils.FileHelper
 import java.io.BufferedReader
-import java.io.File
 
-class DayTwo(val file : File) {
+class DayTwo(val reader: String)  {
 
     fun init(){
-        file.bufferedReader().use { stream ->
-            dayTwo(stream, false)
-        }
-        file.bufferedReader().use { stream ->
-            dayTwo(stream, true)
-        }
+        dayTwo(FileHelper().fetchBufferedStreamFromResource(reader), false)
+        dayTwo(FileHelper().fetchBufferedStreamFromResource(reader), true)
     }
 
     private fun dayTwo(fileStream : BufferedReader, useAim : Boolean){

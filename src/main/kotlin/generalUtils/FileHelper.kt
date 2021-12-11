@@ -22,4 +22,8 @@ class FileHelper {
         }
         return fileList
     }
+
+    fun fetchBufferedStreamFromResource(relativePosition : String) : BufferedReader{
+        return FileHelper::class.java.getResourceAsStream(relativePosition).bufferedReader()
+    }
 }

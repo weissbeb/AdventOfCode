@@ -1,29 +1,26 @@
 package dayFive
 
 import generalUtils.FileHelper
-import java.io.File
 
-class DayFive(val file: File, val easyMode: Boolean)  {
+class DayFive(private val reader: String, private val easyMode: Boolean) {
 
-    val matrix =  mutableListOf<MutableList<Coordinate>>()
+    val matrix = mutableListOf<MutableList<Coordinate>>()
     var lstLinesStr = mutableListOf<String>()
-    var lstLines= mutableListOf<Line>()
+    var lstLines = mutableListOf<Line>()
     var biggestX = 0
     var biggestY = 0
 
     fun init() {
-        file.bufferedReader().use { stream ->
-            lstLinesStr = FileHelper().fetchLinesAsString(stream)
-        }
+        lstLinesStr = FileHelper().fetchLinesAsString(FileHelper().fetchBufferedStreamFromResource(reader))
 
         lstLinesStr.forEach {
             interpretLine(it)
         }
 
-        for(i in 0 .. biggestX){
+        for (i in 0..biggestX) {
             val innerChild = mutableListOf<Coordinate>()
-            for(ii in 0 .. biggestY){
-                innerChild.add(Coordinate(i,ii))
+            for (ii in 0..biggestY) {
+                innerChild.add(Coordinate(i, ii))
             }
             matrix.add(innerChild)
         }
@@ -31,14 +28,14 @@ class DayFive(val file: File, val easyMode: Boolean)  {
         fetchCorruption()
     }
 
-    fun interpretLine(line : String){
+    fun interpretLine(line: String) {
         val lstNums = mutableListOf<Int>()
-        line.split("->").forEach{ halfString ->
-            halfString.split(",").forEach{ singleNum ->
-                lstNums.add(Integer.parseInt(singleNum.replace(" ","")))
+        line.split("->").forEach { halfString ->
+            halfString.split(",").forEach { singleNum ->
+                lstNums.add(Integer.parseInt(singleNum.replace(" ", "")))
             }
         }
-        lstLines.add(Line(lstNums[0],lstNums[1],lstNums[2],lstNums[3]))
+        lstLines.add(Line(lstNums[0], lstNums[1], lstNums[2], lstNums[3]))
 
         biggestX =
             if (lstNums[0] > biggestX) lstNums[0]
@@ -50,9 +47,9 @@ class DayFive(val file: File, val easyMode: Boolean)  {
             else biggestY
     }
 
-    fun fetchCorruption(){
+    fun fetchCorruption() {
         lstLines.forEach { currLine ->
-            if(!easyMode || (currLine.direction == currLine.SOUTH || currLine.direction == currLine.EAST))
+            if (!easyMode || (currLine.direction == currLine.SOUTH || currLine.direction == currLine.EAST))
                 currLine.coordinatesICorrupt.forEach { currentCorruption ->
                     matrix.get(currentCorruption.x).get(currentCorruption.y).corruption += 1
                 }
@@ -61,7 +58,7 @@ class DayFive(val file: File, val easyMode: Boolean)  {
         var corrupted = 0
         matrix.forEach { innerChild ->
             innerChild.forEach { coordinate ->
-                if (coordinate.corruption > 1)corrupted += 1
+                if (coordinate.corruption > 1) corrupted += 1
             }
         }
         println("Corrupted fields... easymode activated: $easyMode - Corrption: $corrupted")

@@ -4,17 +4,12 @@ import generalUtils.FileHelper
 import java.io.BufferedReader
 import java.io.File
 
-class DayOne(val file : File) {
+class DayOne(val reader: String) {
     val rollingMeasures = mutableListOf<RollingMeasure>()
 
     fun init(){
-        file.bufferedReader().use { stream ->
-            dayOnePartOne(stream)
-        }
-
-        file.bufferedReader().use { stream ->
-            dayOnePartTwo(stream)
-        }
+        dayOnePartOne(FileHelper().fetchBufferedStreamFromResource(reader))
+        dayOnePartTwo(FileHelper().fetchBufferedStreamFromResource(reader))
     }
 
     private fun dayOnePartOne(fileStream : BufferedReader){

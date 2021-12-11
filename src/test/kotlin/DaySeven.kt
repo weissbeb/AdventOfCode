@@ -7,7 +7,7 @@ class DaySeven {
 
     @Test
     fun testDaySeven() {
-        val daySeven = DaySeven(File("""C:\Users\baumg\Desktop\Neuer Ordner\day7t.txt"""))
+        val daySeven = DaySeven("/input/day7.txt")
         assertEquals(37, daySeven.calculateCheapestPositionByMedian())
         assertEquals(168, daySeven.calculateCheapestPositionByMean())
     }

@@ -1,19 +1,17 @@
 package dayThree
 
 import generalUtils.FileHelper
-import java.io.File
 import kotlin.math.pow
 
-class DayThree(val file: File) {
+class DayThree(val reader: String)  {
     private var binaryCommon = ""
     private var binaryUncommon = ""
     private var commonBinaryCount = IntArray(0)
     private var lstBinary = mutableListOf<String>()
 
     fun init() {
-        file.bufferedReader().use { stream ->
-            lstBinary = FileHelper().fetchLinesAsString(stream)
-        }
+        lstBinary = FileHelper().fetchLinesAsString(FileHelper().fetchBufferedStreamFromResource(reader))
+
         dayThree()
 
     }
