@@ -1,14 +1,13 @@
 import dayFive.DayFive
 import dayFour.DayFour
 import dayOne.DayOne
-import dayOne.RollingMeasure
+import daySeven.DaySeven
 import daySix.DaySix
 import dayThree.DayThree
 import dayTwo.DayTwo
-import java.io.BufferedReader
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
     val dayOne = DayOne(File("""C:\Users\baumg\Desktop\Neuer Ordner\input.csv"""))
     dayOne.init()
 
@@ -32,6 +31,11 @@ fun main(args: Array<String>) {
     println("Oh no, there are ${daySix.forgetObjects(80)} fishies all around us...")
     daySix = DaySix(File("""C:\Users\baumg\Desktop\Neuer Ordner\day6.txt"""))
     println("Oh no, there are ${daySix.forgetObjects(256)} fishies all around us...")
+
+    println("===Day7===")
+    val daySeven = DaySeven(File("""C:\Users\baumg\Desktop\Neuer Ordner\day7.txt"""))
+    println("The ideal fuel consumption is ${daySeven.calculateCheapestPositionByMedian()} ... ")
+    println("... or rather ${daySeven.calculateCheapestPositionByMean()} what do I know ... ")
 }
 
 
