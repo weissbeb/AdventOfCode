@@ -3,6 +3,7 @@ import dayFour.DayFour
 import dayOne.DayOne
 import daySeven.DaySeven
 import daySix.DaySix
+import dayTen.DayTen
 import dayThree.DayThree
 import dayTwo.DayTwo
 
@@ -37,5 +38,14 @@ class DayExecutor {
         val daySeven = DaySeven("/input/day7.txt")
         println("The ideal fuel consumption is ${daySeven.calculateCheapestPositionByMedian()} ... ")
         println("... or rather ${daySeven.calculateCheapestPositionByMean()} what do I know ... ")
+
+        println("===Day8===")
+
+
+        println("===Day10===")
+        val dayTen = DayTen("/input/day10.txt")
+        dayTen.findCorruptedAndIncompleteLines()
+        println("That was easy to develop and I did not overthink at all at first - solution part I ist ${dayTen.corruptionResult}")
+        println("Part II says ${dayTen.fetchIncompleteResult()}")
     }
 }
