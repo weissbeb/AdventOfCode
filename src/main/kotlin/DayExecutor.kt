@@ -1,6 +1,7 @@
 import dayEight.DayEight
 import dayFive.DayFive
 import dayFour.DayFour
+import dayNine.DayNine
 import dayOne.DayOne
 import daySeven.DaySeven
 import daySix.DaySix
@@ -45,6 +46,10 @@ class DayExecutor {
         println("Part 1 solution is ${day8.fetchUniqueNumbers()}")
         println("Part 2 Part solution is ${day8.fetchPartTwoResult()}")
 
+        println("===Day9===")
+        val day9 = DayNine("/input/day9.txt")
+        println("Part 1 solution is ${day9.calcPartOneAndInit()}")
+        println("Part 2 solution is ${day9.calcPartTwo()}")
 
         println("===Day10===")
         val dayTen = DayTen("/input/day10.txt")

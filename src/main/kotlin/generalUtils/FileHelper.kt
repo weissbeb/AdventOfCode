@@ -13,6 +13,19 @@ class FileHelper {
         return fileList
     }
 
+    fun fetchLinesAsIntList(fileStream: BufferedReader) : MutableList<MutableList<Int>>{
+        val fileList = mutableListOf<MutableList<Int>>()
+        while(true){
+            val nxtLine = fileStream.readLine() ?: break
+            val childFileList = mutableListOf<Int>()
+            nxtLine.forEach { currChar ->
+                childFileList.add(currChar.digitToInt())
+            }
+            fileList.add(childFileList)
+        }
+        return fileList
+    }
+
 
     fun fetchLinesAsInt(fileStream : BufferedReader) : MutableList<Int>{
         val fileList = mutableListOf<Int>()
