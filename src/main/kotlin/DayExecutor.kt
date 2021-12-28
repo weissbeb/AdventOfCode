@@ -1,3 +1,4 @@
+import dayEight.DayEight
 import dayFive.DayFive
 import dayFour.DayFour
 import dayOne.DayOne
@@ -40,6 +41,9 @@ class DayExecutor {
         println("... or rather ${daySeven.calculateCheapestPositionByMean()} what do I know ... ")
 
         println("===Day8===")
+        val day8 = DayEight("/input/day8.txt")
+        println("Part 1 solution is ${day8.fetchUniqueNumbers()}")
+        println("Part 2 Part solution is ${day8.fetchPartTwoResult()}")
 
 
         println("===Day10===")
