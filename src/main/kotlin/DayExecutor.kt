@@ -1,4 +1,5 @@
 import dayEight.DayEight
+import dayEleven.DayEleven
 import dayFive.DayFive
 import dayFour.DayFour
 import dayNine.DayNine
@@ -56,5 +57,12 @@ class DayExecutor {
         dayTen.findCorruptedAndIncompleteLines()
         println("That was easy to develop and I did not overthink at all at first - solution part I ist ${dayTen.corruptionResult}")
         println("Part II says ${dayTen.fetchIncompleteResult()}")
+
+        println("===Day11===")
+
+        val dayEleven = DayEleven("/input/day11.txt")
+        dayEleven.startSteps()
+        println("Flashes during Part 1: ${dayEleven.getFlashResult()}")
+        println("First sync flash during Part 2: ${dayEleven.getFirstSyncFlash()}")
     }
 }
